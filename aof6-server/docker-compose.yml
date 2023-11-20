@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./modpacks:/modpacks:ro
+      - data:/data
+    environment:
+      EULA: "true"
+      ONLINE_MODE: "true"
+      TYPE: CURSEFORGE
+      CF_SERVER_MOD: /modpacks/aof6-server.zip
+      MEMORY: "12G"
+      ENABLE_ROLLING_LOGS: "true"
+      OVERRIDE_SERVER_PROPERTIES: "true"
+      DIFFICULTY: "normal"
+      ALLOW_FLIGHT: "true"
+      VIEW_DISTANCE: 10
+      MAX_PLAYERS: 10
+      PVP: "true"
+      LEVEL_TYPE: "biomesoplenty"
+      MOTD: "♂FISTING IS $300♂"
+
+volumes:
+  data: {}
